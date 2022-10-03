@@ -4,7 +4,8 @@
   "description": "meadowlark express",
   "main": "meadowlark.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint meadowlark.js lib"
   },
   "keywords": [
     "meadowlark"
@@ -16,6 +17,9 @@
     "express-handlebars": "3.1.0"
   },
   "devDependencies": {
-    "jest": "25.5.4"
+    "eslint": "5.16.0",
+    "jest": "25.5.4",
+    "portfinder": "1.0.32",
+    "puppeteer": "1.20.0"
   }
 }
