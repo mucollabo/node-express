@@ -71,6 +71,8 @@ app.use(handlers.notFound)
 // custom 500 page
 app.use(handlers.serverError)
 
+app.get('/cart/checkout', handlers.checkoutEmail)
+app.post('/cart/checkout', handlers.checkoutEmailProcess)
 
 
 if (require.main === module) {
