@@ -3,3 +3,4 @@ node_modules/
 .credentials.*
 sendgrid.env
 access.log
+data/

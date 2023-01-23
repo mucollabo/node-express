@@ -9,7 +9,7 @@ const credentials = require('./.credentials.development')
 const cookieParser = require('cookie-parser')
 const expressSession = require('express-session')
 const flashMiddleware = require('./lib/middleware/flash')
-
+const db = require('./db')
 
 // configure handlebars view engine
 app.engine('handlebars', expressHandlebars({
@@ -43,14 +43,15 @@ const port = process.env.PORT || 3000
 
 app.get('/', handlers.home)
 
-app.get('/about', handlers.about)
+// app.get('/about', handlers.about)
 
-app.get('/section-test', handlers.sectionTest)
+// app.get('/section-test', handlers.sectionTest)
 
 app.get('/newsletter-signup', handlers.newsletterSignup)
 app.post('/newsletter-signup/process', handlers.newsletterSignupProcess)
 app.get('/newsletter-signup/thank-you', handlers.newsletterSignupThankYou)
 app.get('/newsletter-archive', handlers.newsletterSignupThankYou)
+app.get('/vacations', handlers.listVacations)
 
 // handlers for fetch/JSON form submission
 // app.get('/newsletter', handlers.newsletter)
@@ -71,8 +72,8 @@ app.use(handlers.notFound)
 // custom 500 page
 app.use(handlers.serverError)
 
-app.get('/cart/checkout', handlers.checkoutEmail)
-app.post('/cart/checkout', handlers.checkoutEmailProcess)
+// app.get('/cart/checkout', handlers.checkoutEmail)
+// app.post('/cart/checkout', handlers.checkoutEmailProcess)
 
 
 if (require.main === module) {
