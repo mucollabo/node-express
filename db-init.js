@@ -23,7 +23,13 @@ const createScript = `
         notes text,
         packages_sold integer
     );
+    CREATE TABLE IF NOT EXISTS vacation_in_season_listeners (
+        email varchar (200) NOT NULL,
+        sku varchar (20) NOT NULL,
+        PRIMARY KEY (email, sku)
+    );
 `
+
 const getVacationCount = async client => {
     const { rows } = await client.query('SELECT COUNT(*) FROM VACATIONS')
     return Number(rows[0].count)
