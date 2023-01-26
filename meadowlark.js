@@ -5,6 +5,9 @@ const multiparty = require('multiparty')
 const cookieParser = require('cookie-parser')
 const expressSession = require('express-session')
 const RedisStore = require('connect-redis')(expressSession)
+const addRoutes = require('./routes')
+
+
 
 const handlers = require('./lib/handlers')
 const weatherMiddlware = require('./lib/middleware/weather')
@@ -12,6 +15,7 @@ const weatherMiddlware = require('./lib/middleware/weather')
 const credentials = require('./.credentials.development')
 
 const app = express()
+addRoutes(app)
 
 // configure Handlebars view engine
 app.engine('handlebars', expressHandlebars({
