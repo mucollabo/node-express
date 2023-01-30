@@ -133,6 +133,27 @@ exports.notifyWhenInSeasonProcess = async (req, res) => {
   return res.redirect(303, '/vacations')
 }
 
+exports.getVacationsApi = async (req, res) => {
+  const vacations = await db.getVacations({ available: true })
+  res.json(vacations)
+}
+
+exports.getVacationBySkuApi = async (req, res) => {
+  const vacations = await db.getVacationBySku(req.params.sku)
+  res.json(vacations)
+}
+
+exports.addVacationInSeasonListenerApi = async (req, res) => {
+  await db.addVacationInSeasonListener(req.params.sku)
+  res.json({ message: 'success'})
+}
+
+exports.requestDeleteVacationApi = async (req, res) => {
+  const { email, notes } = req.body
+  res.status(500).json({ message: 'not yet implemented' })
+}
+
+
 exports.notFound = (req, res) => res.render('404')
 
 // Express recognizes the error handler by way of its four

@@ -91,6 +91,11 @@ app.post('/notify-me-when-in-season', handlers.notifyWhenInSeasonProcess)
 // utility routes
 app.get('/set-currency/:currency', handlers.setCurrency)
 
+app.get('/api/vacations', handlers.getVacationsApi)
+app.get('/api/vacation/:sku', handlers.getVacationBySkuApi)
+app.post('/api/vacation/:sku/notify-when-in-session', handlers.addVacationInSeasonListenerApi)
+app.delete('api/vacation/:sku', handlers.requestDeleteVacationApi)
+
 app.use(handlers.notFound)
 app.use(handlers.serverError)
 
